@@ -1,4 +1,4 @@
-#Money
+# Money
 
 Money is a package that facilitates the handling and display of currencies and monetary amounts.
 
