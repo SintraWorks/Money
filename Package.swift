@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Money",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v13),
         .iOS(.v13),
         .watchOS(.v6),
         .tvOS(.v13)

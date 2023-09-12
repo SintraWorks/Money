@@ -47,7 +47,7 @@ extension NumberFormatter {
 
         numberStyle = .currencyPlural
 
-        if #available(iOS 16, *) {
+        if #available(macOS 13, iOS 16, tvOS 16, watchOS 9, *) {
             var components = Locale.Components(languageCode: locale.language.languageCode, languageRegion: locale.region)
             components.currency = Locale.Currency(currencyCode)
             locale = Locale(components: components)
