@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "C605DA93-B40C-4969-A06E-93934383850F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "Money",
+          "name" : "Money"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MoneyTests",
+        "name" : "MoneyTests"
+      }
+    }
+  ],
+  "version" : 1
+}
