@@ -88,4 +88,4 @@ Additionally, if you need to create monetary amounts at runtime, whose currency 
 [mit-badge]: https://img.shields.io/badge/License-MIT-blue.svg?style=flat
 [mit-url]: https://tldrlegal.com/license/mit-license
 [swift version]: https://swift.org/download/
-[swift version badge]: https://img.shields.io/badge/swift%20version-5.0+-orange.svg
+[swift version badge]: https://img.shields.io/badge/swift%20version-5.8+-orange.svg

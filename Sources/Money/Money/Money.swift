@@ -217,6 +217,7 @@ enum MoneyFactory {
     ///
     /// The ISO list of currency codes is maintained by SIX Financial Information AG. Follow this link and look for ISO 4217 to gain access to the list:
     /// [ISO 4217 maintenance](https://www.six-group.com/en/products-services/financial-information/data-standards.html)
+    @available(macOS 13, iOS 16, tvOS 16, watchOS 9, *)
     public static func createCurrencies() -> String {
         // Since iOS doesn't provide info on the unit scale of each currency, we use a hard-coded list, that only represents currencies
         // that deviate from the, more or less standard, unit scale of 2.
