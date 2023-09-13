@@ -1,5 +1,8 @@
 # Money
 
+[![License][mit-badge]][mit-url]
+[![Swift Version][swift version badge]][swift version]
+
 Money is a package that facilitates the handling and display of currencies and monetary amounts.
 
 ### Goals
@@ -80,3 +83,9 @@ Additionally, if you need to create monetary amounts at runtime, whose currency 
             
             try MoneyFactory.moneyFrom(amount: myRuntTimeAmount, currency: myRuntimeCurrency)
 
+
+[license]: https://opensource.org/licenses/MIT
+[mit-badge]: https://img.shields.io/badge/License-MIT-blue.svg?style=flat
+[mit-url]: https://tldrlegal.com/license/mit-license
+[swift version]: https://swift.org/download/
+[swift version badge]: https://img.shields.io/badge/swift%20version-5.0+-orange.svg
