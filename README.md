@@ -5,8 +5,8 @@ Money is a package that facilitates the handling and display of currencies and m
 ### Goals
 
 1. **Precision**: Allow handling of monetary amounts without loss of precision. This is achieved by using the `Decimal` type to represent amounts. Decimals do not suffer from the (potentially) imprecise representations that make floating point numbers inappropriate as a carrier for monetary amounts.
-2. **Type safety**: Disallow arithmetical operations between monetary amounts of different currencies. This is achieved by making concrete the money type generic over its currency. This enables the compiler level support when dealing with money types.
-3. Yet we must be flexible in allowing dynamic creation of concrete monetary amounts, and allowing collections that contain monetary amounts of varying currencies. This is achieved through the money protocol.
+2. **Type safety**: Disallow arithmetical operations between monetary amounts of different currencies. This is achieved by making the concrete money type (`Tender`) generic over its currency, enabling compiler level support when dealing with money types.
+3. Yet we must be flexible in allowing dynamic creation of concrete monetary amounts, and allowing collections that contain monetary amounts of varying currencies. This is achieved through the `Money` protocol.
 4. **Convenience**: Working with monetary amounts should be as easy as working with built-in number types. This is achieved by adding provisions that facilitate day-to-day needs when dealing with monetary amounts.
 
 
@@ -49,7 +49,7 @@ You cannot add or subtract `Tender`s of different currencies. You can however ad
 
         let sum = someMoney5 + someMoney6
         
-You can also compare `Tender`s of the same currency/
+You can also compare `Tender`s of the same currency:
         
         if someMoney5 < someMoney6 {
             …do something…
