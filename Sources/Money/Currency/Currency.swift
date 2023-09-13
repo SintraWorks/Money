@@ -49,7 +49,7 @@ extension Currency {
     }
 
     public static func nameLocalized(for languageCode: String? = nil) -> String? {
-        if #available(macOS 13, *) {
+        if #available(macOS 13, iOS 16, tvOS 16, watchOS 9, *) {
             return currencyLocale(for: languageCode ?? Locale.current.language.languageCode?.identifier ?? "en", regionCode: "*").localizedString(forCurrencyCode: Self.code)
         } else {
             return currencyLocale(for: languageCode ?? Locale.current.languageCode ?? "en", regionCode: "*").localizedString(forCurrencyCode: Self.code)
@@ -58,7 +58,7 @@ extension Currency {
 
     public static func pluralizedNameLocalized(amount: Decimal = 2, languageCode: String? = nil, regionCode: String = "*") -> String? {
         let formatter = NumberFormatter()
-        if #available(macOS 13, *) {
+        if #available(macOS 13, iOS 16, tvOS 16, watchOS 9, *) {
             formatter.locale = Locale(identifier: "\(languageCode ?? Locale.current.language.languageCode?.identifier ?? "en")_\(regionCode)")
         } else {
             formatter.locale = Locale(identifier: "\(languageCode ?? Locale.current.languageCode ?? "en")_\(regionCode)")
