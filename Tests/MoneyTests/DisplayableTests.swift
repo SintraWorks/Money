@@ -53,8 +53,18 @@ final class DisplayableTests: XCTestCase {
         var displayableUSD = DisplayableMoney<USD>(3.14)
         displayableUSD.locale = Locale(identifier: "en_US")
         XCTAssertEqual(displayableUSD.formatted, "$3.14")
+
+        var displayableUSDRoundToScale = DisplayableMoney<USD>(2.998)
+        displayableUSDRoundToScale.locale = Locale(identifier: "en_US")
+        // By default amounts are rounded according to the currency's scale.
+        XCTAssertEqual(displayableUSDRoundToScale.formatted, "$3.00")
     }
 
+    func testFormattedFor() throws {
+        let displayableUSD2 = DisplayableMoney<USD>(2.998)
+        XCTAssertEqual(displayableUSD2.formatted(for: Locale(identifier: "en_US"), maximumFractionDigits: 3), "$2.998")
+    }
+    
     func testLocale() throws {
         var displayableEUR = DisplayableMoney<EUR>(3.14)
         displayableEUR.locale = Locale(identifier: "nl_NL")
@@ -65,15 +75,18 @@ final class DisplayableTests: XCTestCase {
         let displayableEUR = DisplayableMoney<EUR>(3.14)
         XCTAssertEqual(displayableEUR.symbol, "€")
 
-        let displayableJPY = DisplayableMoney<JPY>(3)
+        var displayableJPY = DisplayableMoney<JPY>(3)
+        displayableJPY.locale = Locale(identifier: "en_US")
         XCTAssertEqual(displayableJPY.symbol, "¥")
 
-        let displayableUSD = DisplayableMoney<USD>(3.14)
+        var displayableUSD = DisplayableMoney<USD>(3.14)
+        displayableUSD.locale = Locale(identifier: "en_US")
         XCTAssertEqual(displayableUSD.symbol, "$")
     }
 
     func testSeparator() throws {
-        let displayableEUR = DisplayableMoney<EUR>(3.14)
+        var displayableEUR = DisplayableMoney<EUR>(3.14)
+        displayableEUR.locale = Locale(identifier: "en_US")
         XCTAssertEqual(displayableEUR.separator, ".")
     }
 

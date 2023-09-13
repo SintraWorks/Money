@@ -36,7 +36,7 @@ public protocol Displayable: Equatable, Identifiable, CustomStringConvertible, C
     func with(languageCode: String, regionCode: String) -> any Displayable
 
     var formatted: String? { get }
-    func formatted(for: Locale) -> String?
+    func formatted(for: Locale, maximumFractionDigits: Int?) -> String?
     func formattedTruncatingDecimals(for locale: Locale) -> String?
     func formattedWithoutCurrencySymbol(for locale: Locale) -> String?
 }
@@ -99,8 +99,11 @@ extension DisplayableMoney {
 }
 
 extension DisplayableMoney {
-    public func formatted(for locale: Locale = .current) -> String? {
+    public func formatted(for locale: Locale = .current, maximumFractionDigits: Int? = nil) -> String? {
         let savedLocale = formatter.locale
+        if let maximumFractionDigits {
+            formatter.maximumFractionDigits = maximumFractionDigits
+        }
         defer {
             formatter.locale = savedLocale
         }
