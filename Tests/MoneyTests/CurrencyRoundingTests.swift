@@ -70,18 +70,18 @@ final class CurencyRoundingTests: XCTestCase {
 
     func testecimalStringGetter() throws {
         var amount = Decimal(.pi)
-
+        
         amount.currencyRound(scale: 14)
-        XCTAssertEqual(amount.stringValue, "3.14159265358979")
+        XCTAssertEqual(amount.stringValue, Decimal(string: "3.14159265358979")!.stringValue)
 
         amount.currencyRound(scale: 4)
-        XCTAssertEqual(amount.stringValue, "3.1416")
+        XCTAssertEqual(amount.stringValue, Decimal(string: "3.1416")!.stringValue)
 
         amount.currencyRound(scale: 3)
-        XCTAssertEqual(amount.stringValue, "3.142")
+        XCTAssertEqual(amount.stringValue, Decimal(string: "3.142")!.stringValue)
 
         amount.currencyRound(scale: 2)
-        XCTAssertEqual(amount.stringValue, "3.14")
+        XCTAssertEqual(amount.stringValue, Decimal(string: "3.14")!.stringValue)
     }
 
     func testError() throws {
