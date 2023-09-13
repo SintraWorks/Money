@@ -78,7 +78,6 @@ final class CurencyTests: XCTestCase {
         XCTAssertEqual(EUR.pluralizedNameLocalized(amount: 24, languageCode: "fr", regionCode: "JP"), "euros")
         XCTAssertEqual(USD.pluralizedNameLocalized(amount: 24, languageCode: "fr", regionCode: "JP"), "dollars des États-Unis")
         XCTAssertEqual(JPY.pluralizedNameLocalized(amount: 24, languageCode: "fr", regionCode: "JP"), "yens japonais")
-
     }
 
     // This test can be uncommented and run when there is a need to update the list of supported currencies.

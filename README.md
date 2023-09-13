@@ -18,6 +18,8 @@ We provide default implementations for all properties defined in the protocol to
 
 For the represention of monetary amounts we use two related types: `Money`, a protocol that represents monetary amounts, and `Tender` a type that conforms to `Money`. `Tender` is generic over the currency it represents, which provides compiler assisted type safety (e.g. disallowing the addition of `Tender`s of different currencies), while its conformance to the `Money` protocol provides the needed flexibility to work with collections of money of various currencies, and run-time instantiation of monetary amounts whose currency is not known at compile-time.
 
+Think of `Money` as the abstract type, providing dynamic flexibility at runtime, and of `Tender` as the concrete monetary amount that is tendered (offered) for processing.
+
 While you cannot add or subtract `Tender`s of different currencies (which would make no sense without first converting them to the same currency), or multiply one `Tender` by another, you _can_ perform arithmetic on `Tender`s. E.g. you can multiply a `Tender` by a numeric type: €5.42 * 3,14.
 
 ### Usage
@@ -26,7 +28,11 @@ Currencies are already provided, so you should not need to create currencies. Ho
 
     public enum MyCustomCurrency: Currency { public static var minorUnitScale: Int { 4 } }
     
-Create monetary amounts by creating instances of `Tender`, providing the currency it is generic over. Preferably create `Tender`s from `Decimal`s, `Int`s or `String`s, rather than from floating point values, although you can use those if you really need to.
+Otherwise, you can just create an enum with an empty body:
+    
+    public enum MyCustomCurrency: Currency {}
+    
+Create concrete monetary amounts by creating instances of `Tender`, providing the currency it is generic over. Preferably create `Tender`s from `Decimal`s, `Int`s or `String`s, rather than from floating point values, although you can use those if you really need to.
 
         let amount: Decimal = 3.14 // (or, preferably: Decimal(string: "3.14"))
         let someMoney1 = Tender<EUR>(amount)
@@ -54,11 +60,23 @@ Take a look at the TenderTests and TenderAlgebraTests files for a good overview 
 Of course, we will usually need to display our monetary amounts to our users. To this end, the `Money` type provides a `displayable`, of type `Displayable`, that facilitates the translation from the amount to user friendly strings. When you want to diplay an amount to the user, ask the instance for a `displayable`, and ask the `Displayable` for the desired string:
 
             someMoney5.displayable.formatted
-            someMoney5.displayable.amount()
-            someMoney5.displayable.amount(for: Locale(identifier: "nl_NL")
-            someMoney5.displayable.amountWithoutDecimals()
-            someMoney5.displayable.amountWithoutDecimals(for: Locale(identifier: "en_GB")
-            someMoney5.displayable.amountWithoutCurrencySymbol()
-            someMoney5.displayable.amountWithoutCurrencySymbol(for: Locale(identifier: "pt_PT")
+            someMoney5.displayable.formattedTruncatingDecimals()
+            someMoney5.displayable.formattedTruncatingDecimals(for: Locale(identifier: "en_GB")
+            someMoney5.displayable.formattedWithoutCurrencySymbol()
+            someMoney5.displayable.formattedWithoutCurrencySymbol(for: Locale(identifier: "pt_PT")
 
 You can also ask a displayable for the currency symbol and decimal separator and currency name.
+
+If you need to store collections of amounts with various currencies, you cannot create a collection of `Tender`, since `Tender` is generic over its currency. In this case you should create a collection of `Money`, since Money, while holding a currency, is not generic over it.
+            
+            var variousCurrencies = [any Money]()
+            variousCurrencies.append(Tender<EUR>(1))
+            variousCurrencies.append(Tender<USD>(0.5))
+            
+Additionally, if you need to create monetary amounts at runtime, whose currency you do not know at compile time, use the `Money` type to model your data. Use the `MoneyFactory` to obtain a concrete `Tender` (typed as `Money`) from an amount and currency code:
+
+            let myRuntTimeAmount = Decimal(42)
+            let myRuntimeCurrency = SupportedCurrency.INR
+            
+            try MoneyFactory.moneyFrom(amount: myRuntTimeAmount, currency: myRuntimeCurrency)
+

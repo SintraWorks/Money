@@ -112,7 +112,7 @@ extension DisplayableMoney {
         return formatter.string(for: amount)
     }
 
-    /// Returns a string representing the amount, formatted according to the `nl_NL` locale, but replacing the decimals with "-"
+    /// Returns a string representing the amount, formatted according to the requested locale, but truncating the decimals.
     public func formattedTruncatingDecimals(for locale: Locale = .current) -> String? {
         let savedLocale = formatter.locale
         defer {
