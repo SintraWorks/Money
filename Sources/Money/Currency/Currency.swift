@@ -49,12 +49,20 @@ extension Currency {
     }
 
     public static func nameLocalized(for languageCode: String? = nil) -> String? {
-        currencyLocale(for: languageCode ?? Locale.current.languageCode ?? "en", regionCode: "*").localizedString(forCurrencyCode: Self.code)
+        if #available(macOS 13, *) {
+            return currencyLocale(for: languageCode ?? Locale.current.language.languageCode?.identifier ?? "en", regionCode: "*").localizedString(forCurrencyCode: Self.code)
+        } else {
+            return currencyLocale(for: languageCode ?? Locale.current.languageCode ?? "en", regionCode: "*").localizedString(forCurrencyCode: Self.code)
+        }
     }
 
     public static func pluralizedNameLocalized(amount: Decimal = 2, languageCode: String? = nil, regionCode: String = "*") -> String? {
         let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "\(languageCode ?? Locale.current.languageCode ?? "en")_\(regionCode)")
+        if #available(macOS 13, *) {
+            formatter.locale = Locale(identifier: "\(languageCode ?? Locale.current.language.languageCode?.identifier ?? "en")_\(regionCode)")
+        } else {
+            formatter.locale = Locale(identifier: "\(languageCode ?? Locale.current.languageCode ?? "en")_\(regionCode)")
+        }
         formatter.currencyCode = code
 
         return formatter.currencyName(for: amount)
