@@ -213,7 +213,7 @@ enum MoneyFactory {
         }
     }
 
-    /// Uses the list of currency codes known to iOS to generate a string with Swift code defining types for those currencies.
+    /// Uses the list of currency codes known to iOS to generate a string with Swift code, defining types for those currencies.
     ///
     /// The ISO list of currency codes is maintained by SIX Financial Information AG. Follow this link and look for ISO 4217 to gain access to the list:
     /// [ISO 4217 maintenance](https://www.six-group.com/en/products-services/financial-information/data-standards.html)
