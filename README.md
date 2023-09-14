@@ -1,7 +1,8 @@
 # Money
 
 [![License][mit-badge]][mit-url]
-[![Swift Version][swift version badge]][swift version]
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FSintraWorks%2FMoney%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/SintraWorks/Money)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FSintraWorks%2FMoney%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/SintraWorks/Money)
 
 Money is a package that facilitates the handling and display of currencies and monetary amounts.
 
@@ -87,5 +88,3 @@ Additionally, if you need to create monetary amounts at runtime, whose currency 
 [license]: https://opensource.org/licenses/MIT
 [mit-badge]: https://img.shields.io/badge/License-MIT-blue.svg?style=flat
 [mit-url]: https://tldrlegal.com/license/mit-license
-[swift version]: https://swift.org/download/
-[swift version badge]: https://img.shields.io/badge/swift%20version-5.8+-orange.svg
