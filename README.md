@@ -10,7 +10,7 @@ Money is a package that facilitates the handling and display of currencies and m
 
 1. **Precision**: Allow handling of monetary amounts without loss of precision. This is achieved by using the `Decimal` type to represent amounts. Decimals do not suffer from the (potentially) imprecise representations that make floating point numbers inappropriate as a carrier for monetary amounts.
 2. **Type safety**: Disallow arithmetical operations between monetary amounts of different currencies. This is achieved by making the concrete money type (`Tender`) generic over its currency, enabling compiler level support when dealing with money types.
-3. Yet we must be flexible in allowing dynamic creation of concrete monetary amounts, and allowing collections that contain monetary amounts of varying currencies. This is achieved through the `Money` protocol.
+3. **Flexibility**: Yet we must be flexible in allowing dynamic creation of concrete monetary amounts, and allowing collections that contain monetary amounts of varying currencies. This is achieved through the `Money` protocol.
 4. **Convenience**: Working with monetary amounts should be as easy as working with built-in number types. This is achieved by adding provisions that facilitate day-to-day needs when dealing with monetary amounts.
 
 
