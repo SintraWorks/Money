@@ -24,7 +24,7 @@ For the represention of monetary amounts we use two related types: `Money`, a pr
 
 Think of `Money` as the abstract type, providing dynamic flexibility at runtime, and of `Tender` as the concrete monetary amount that is tendered (offered) for processing.
 
-While you cannot add or subtract `Tender`s of different currencies (which would make no sense without first converting them to the same currency), or multiply one `Tender` by another, you _can_ perform arithmetic on `Tender`s. E.g. you can multiply a `Tender` by a numeric type: €5.42 * 3,14.
+While you cannot add or subtract `Tender`s of different currencies (which would make no sense without first converting them to the same currency), or multiply one `Tender` by another, you _can_ perform arithmetic on `Tender`s. E.g. you can multiply a `Tender` by a numeric type: €5.42 * 3.14.
 
 ### Usage
 
