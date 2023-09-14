@@ -28,7 +28,7 @@ While you cannot add or subtract `Tender`s of different currencies (which would 
 
 ### Usage
 
-Currencies are already provided, so you should not need to create currencies. However, if, for whatever reason, you find you need to create custom currencies, you can create new currency types as enums that conform to the `Currency` protocol. If your custom unit needs a `minorUnitScale` that is not the standard `2`, then you need to provide a custom implementation in the body of the enum:
+Currencies are already provided, so you should not need to create currencies. However, if, for whatever reason, you find you need to create custom currencies, you can create new currency types as enums that conform to the `Currency` protocol. If your custom currency needs a `minorUnitScale` that is not the standard `2`, then you need to provide a custom implementation in the body of the enum:
 
     public enum MyCustomCurrency: Currency { public static var minorUnitScale: Int { 4 } }
     
